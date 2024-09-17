@@ -1,6 +1,6 @@
 process CHANGEO_ASSIGNGENES {
     tag "$meta.id"
-    label 'process_low'
+    label 'process_high'
     label 'immcantation'
 
     conda "bioconda::changeo=1.3.0 bioconda::igblast=1.22.0 conda-forge::wget=1.20.1"
