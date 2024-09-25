@@ -19,6 +19,7 @@ process DEFINE_CLONES {
     tag "${meta.id}"
 
     label 'process_long_parallelized'
+//    label 'process_single'
     label 'immcantation'
 
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {

@@ -1,7 +1,8 @@
 process COLLAPSE_DUPLICATES {
     tag "$meta.id"
 
-    label 'process_long_parallelized'
+    label 'process_single'
+//'process_long_parallelized' 
     label 'immcantation'
 
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {

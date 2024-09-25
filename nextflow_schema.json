@@ -433,7 +433,7 @@
                     "type": "string",
                     "default": "raxml",
                     "description": "Lineage tree software to use to build trees within Dowser. If you change the default, also set the `lineage_tree_exec` parameter.",
-                    "enum": ["raxml", "igphyml"],
+                    "enum": ["raxml", "igphyml", "dnapars"],
                     "fa_icon": "fas fa-pagelines"
                 },
                 "lineage_tree_exec": {
