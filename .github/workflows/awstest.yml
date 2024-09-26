@@ -33,7 +33,8 @@ jobs:
         run: |
           nextflow run Argentys/airrflow \
           -profile test,awsbatch \
-          --input input2.tsv --mode assembled --max_memory 72.GB --max_cpus 12 \
+          --input s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/input/input1.tsv
+          --mode assembled --max_memory 72.GB --max_cpus 12 \
           --lineage_tree_builder dnapars --lineage_tree_exec /usr/local/bin/dnapars \
           --clonal_threshold 0.16 \
           -w s3://${{ secrets.AWS_S3_BUCKET }}/work/airrflow/work-${{ github.sha }} \
