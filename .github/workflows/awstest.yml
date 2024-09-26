@@ -1,56 +1,33 @@
 name: nf-core AWS test
-# This workflow can be triggered manually with the GitHub Actions workflow dispatch button.
-# It runs the -profile 'test' on AWS Batch
+# This workflow can be triggered manually with the GitHub actions workflow dispatch button.
+# It runs the -profile 'test' on AWS batch
 
 on:
   workflow_dispatch:
-
 jobs:
-  run-on-aws:
+  run-platform:
     name: Run AWS tests
+    if: github.repository == 'nf-core/airrflow'
     runs-on: ubuntu-latest
     steps:
-      # Check out the code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Configure AWS credentials from secrets
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      # Launch workflow using Seqera Platform CLI tool action
+      - name: Launch workflow via Seqera Platform
+        uses: seqeralabs/action-tower-launch@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Change to your AWS region
+          workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}
+          access_token: ${{ secrets.TOWER_ACCESS_TOKEN }}
+          compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
+          revision: ${{ github.sha }}
+          workdir: s3://${{ secrets.AWS_S3_BUCKET }}/work/airrflow/work-${{ github.sha }}
+          parameters: |
+            {
+              "outdir": "s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/results-test-${{ github.sha }}"
+            }
+          profiles: test
 
-      # Install Docker (if not already installed)
-      - name: Install Docker
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
-          sudo systemctl start docker
-          sudo systemctl enable docker
-          docker --version
-
-      # Install Nextflow
-      - name: Install Nextflow
-        run: |
-          curl -s https://get.nextflow.io | bash
-          sudo mv nextflow /usr/local/bin/
-
-      # Run Nextflow pipeline on AWS Batch
-      - name: Run Nextflow on AWS Batch
-        run: |
-          nextflow run Argentys/airrflow \
-          -profile test,awsbatch \
-          --input s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/input/input1.tsv \
-          --mode assembled --max_memory 72.GB --max_cpus 12 \
-          --lineage_tree_builder dnapars --lineage_tree_exec /usr/local/bin/dnapars \
-          --clonal_threshold 0.16 \
-          -w s3://${{ secrets.AWS_S3_BUCKET }}/work/airrflow/work-${{ github.sha }} \
-          --outdir s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/results-test-${{ github.sha }}
-
-      # Upload logs and artifacts
       - uses: actions/upload-artifact@v4
         with:
-          name: Nextflow logs
-          path: .nextflow.log
+          name: Seqera Platform debug log file
+          path: |
+            seqera_platform_action_*.log
+            seqera_platform_action_*.json
