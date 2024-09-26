@@ -22,6 +22,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  # Change to your AWS region
 
+      # Install Docker (if not already installed)
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+          docker --version
+
       # Install Nextflow
       - name: Install Nextflow
         run: |
@@ -33,9 +42,15 @@ jobs:
         run: |
           nextflow run Argentys/airrflow \
           -profile test,awsbatch \
-          --input s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/input/input1.tsv
+          --input s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/input/input1.tsv \
           --mode assembled --max_memory 72.GB --max_cpus 12 \
           --lineage_tree_builder dnapars --lineage_tree_exec /usr/local/bin/dnapars \
           --clonal_threshold 0.16 \
           -w s3://${{ secrets.AWS_S3_BUCKET }}/work/airrflow/work-${{ github.sha }} \
           --outdir s3://${{ secrets.AWS_S3_BUCKET }}/airrflow/results-test-${{ github.sha }}
+
+      # Upload logs and artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Nextflow logs
+          path: .nextflow.log
