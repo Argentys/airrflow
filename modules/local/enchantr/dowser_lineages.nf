@@ -26,7 +26,7 @@ process DOWSER_LINEAGES {
     }
 //    container "docker.io/immcantation:airrflow:4.1.0"
 //    docker.registry  = ''
-    container = 'immcantation:tag'
+    container = 'igortrue/immcantation:latest'
 //docker.io/immcantation/suite:4.5.0"
 //airrflow:4.1.0
 
