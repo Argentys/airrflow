@@ -1,7 +1,7 @@
 <h1>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/nf-core-airrflow_logo_dark.png">
-    <img alt="nf-core/airrflow" src="docs/images/nf-core-airrflow_logo_light.png">
+    <img alt="Argentys/airrflow" src="docs/images/nf-core-airrflow_logo_light.png">
   </picture>
 </h1>
 
