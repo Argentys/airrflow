@@ -102,10 +102,10 @@ nextflow run nf-core/airrflow -profile test,<docker/singularity/podman/shifter/c
 ```bash
 nextflow run Argentys/airrflow -profile test,docker --outdir <OUTDIR>  -w <WORKDIR> --input <input_samplesheet.tsv>  --lineage_trees <false/true>
 ```
-To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using aux/addSequenceId.py script, output is tsv file. output <file>.tsv need to be provided as input in samplesheet.By default pipeline starting from assembled sequences,max cluster size: 500, tree builder : dnapars, max_cpus: 12, max_memory: 72GB, clonal_threshold: auto, subsample: 10000
+To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using aux/addSequenceId.py script, output is tsv file. output file .tsv need to be provided as input in samplesheet.By default pipeline starting from assembled sequences,max cluster size: 500, tree builder : dnapars, max_cpus: 12, max_memory: 72GB, clonal_threshold: auto, subsample: 10000
 It allow process very large input files in reasonable time - 2-3 hours.
 If clonal_threshold can not be calculated on default  model distributions paraameters, pipeline will be stopped.
-It can be manually resumed using the same commandline  with --clonal_threshold <manual THRESHOLD = 0.16> -resume  
+It can be manually resumed using the same commandline  with --clonal_threshold = 0.16 -resume  
 
 To run nf-core/airrflow with your data, prepare a tab-separated samplesheet with your input data. Depending on the input data type (bulk or single-cell, raw reads or assembled reads) the input samplesheet will vary. Please follow the [documentation on samplesheets](https://nf-co.re/airrflow/usage#input-samplesheet) for more details. An example samplesheet for running the pipeline on bulk BCR / TCR sequencing data in fastq format looks as follows:
 
