@@ -104,7 +104,8 @@ nextflow run Argentys/airrflow -profile test,docker --outdir <OUTDIR>  -w <WORKD
 ```
 To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using aux/addSequenceId.py script, output is tsv file. output file .tsv need to be provided as input in samplesheet.By default pipeline starting with
 --mode: assembled 
---max cluster size: 500
+--maxseq: 500
+--minseq: 5
 --tree_builder : dnapars
 --max_cpus: 12
 --max_memory: 72GB 
