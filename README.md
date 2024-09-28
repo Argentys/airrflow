@@ -100,10 +100,9 @@ First, ensure that the pipeline tests run on your infrastructure:
 nextflow run nf-core/airrflow -profile test,<docker/singularity/podman/shifter/charliecloud/conda/institute> --outdir <OUTDIR>
 ```
 ```bash
-nextflow run Argentys/airrflow -profile test,docker --outdir ./result3  -w ./work3 --input input3.tsv  --lineage_trees <false/true>
+nextflow run Argentys/airrflow -profile test,docker --outdir <OUTDIR>  -w <WORKDIR> --input <input_samplesheet.tsv>  --lineage_trees <false/true>
 ```
-To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using addSequenceId.py script, output is tsv file. File Name need to be provided as
-input in samplesheet.
+To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using addSequenceId.py script, output is tsv file. File Name need to be provided as input in samplesheet.By default pipeline starting from assembled sequences.
 
 To run nf-core/airrflow with your data, prepare a tab-separated samplesheet with your input data. Depending on the input data type (bulk or single-cell, raw reads or assembled reads) the input samplesheet will vary. Please follow the [documentation on samplesheets](https://nf-co.re/airrflow/usage#input-samplesheet) for more details. An example samplesheet for running the pipeline on bulk BCR / TCR sequencing data in fastq format looks as follows:
 
