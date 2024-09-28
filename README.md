@@ -103,13 +103,13 @@ nextflow run nf-core/airrflow -profile test,<docker/singularity/podman/shifter/c
 nextflow run Argentys/airrflow -profile test,docker --outdir <OUTDIR>  -w <WORKDIR> --input <input_samplesheet.tsv>  --lineage_trees <false/true>
 ```
 To run against OAS database(missing sequence_id ) - gzipped files need to be reprocessed using aux/addSequenceId.py script, output is tsv file. output file .tsv need to be provided as input in samplesheet.By default pipeline starting with
-mode: assembled 
-max cluster size: 500
-tree builder : dnapars
-max_cpus: 12
-max_memory: 72GB 
-clonal_threshold: auto
-subsample: 10000.
+--mode: assembled 
+--max cluster size: 500
+--tree_builder : dnapars
+--max_cpus: 12
+--max_memory: 72GB 
+--clonal_threshold: auto
+--subsample: 10000
 
 It allow process very large input files in reasonable time - 2-3 hours.
 If clonal_threshold can not be calculated on default  model distributions paraameters, pipeline will be stopped.
