@@ -115,6 +115,7 @@ To run against OAS database(missing sequence_id ) - gzipped files need to be rep
 It allow process very large input files in reasonable time - 2-3 hours.
 If clonal_threshold can not be calculated on default  model distributions parameters, pipeline will be stopped.
 It can be manually resumed using the same commandline  with --clonal_threshold = 0.16 -resume  
+other alternative provide --default_threshold which will be used when clonal_threshold can not be calculated.
 
 To run nf-core/airrflow with your data, prepare a tab-separated samplesheet with your input data. Depending on the input data type (bulk or single-cell, raw reads or assembled reads) the input samplesheet will vary. Please follow the [documentation on samplesheets](https://nf-co.re/airrflow/usage#input-samplesheet) for more details. An example samplesheet for running the pipeline on bulk BCR / TCR sequencing data in fastq format looks as follows:
 
