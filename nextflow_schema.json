@@ -412,6 +412,22 @@
                     "fa_icon": "fab fa-pagelines",
                     "description": "Set the clustering threshold Hamming distance value. Default: 'auto'"
                 },
+                "default_threshold": {
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "enum": ["auto"]
+                        },
+                        {
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    ],
+                    "type": ["string", "number"],
+                    "default": "auto",
+                    "fa_icon": "fab fa-pagelines",
+                    "description": "Set the default clustering threshold Hamming distance value. Default: 'auto'"
+                },
                 "lineage_trees": {
                     "type": "boolean",
                     "description": "Perform clonal lineage tree analysis.",
