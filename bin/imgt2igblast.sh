@@ -85,7 +85,7 @@ for F in ${NT_FILES}; do
         -out ${OUTDIR}/database/${F%%.*}
 done
 
-AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse).+\.fasta")
+AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse|alpaca).+\.fasta")
 for F in ${AA_FILES}; do
     clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
     makeblastdb -parse_seqids -dbtype prot -in ${OUTDIR}/fasta/${F} \
