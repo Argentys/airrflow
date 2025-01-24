@@ -78,7 +78,7 @@ done
 
 # Parse each created fasta file to create igblast database
 cd ${TMPDIR}
-NT_FILES=$(ls *.fasta | grep -E "imgt_(human|mouse).+\.fasta")
+NT_FILES=$(ls *.fasta | grep -E "imgt_(human|mouse|alpaca).+\.fasta")
 for F in ${NT_FILES}; do
     clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
     makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
