@@ -43,10 +43,12 @@ DATE=$(date +"%Y.%m.%d")
 
 # Associative array (for BASH v3) where keys are species folder names and values are query strings
 SPECIES_QUERY=("human:Homo+sapiens"
-                "mouse:Mus")
+               "mouse:Mus"
+	           "alpaca:Vicugna+pacos")
 # Associative array (for BASH v3) with species name replacements
 SPECIES_REPLACE=('human:s/Homo sapiens/Homo_sapiens/g'
-                'mouse:s/Mus musculus/Mus_musculus/g')
+                 'mouse:s/Mus musculus/Mus_musculus/g'
+		         'alpaca:s/Vicugna pacos/Vicugna_pacos/g')
 
 # Counter for loop iteration, used for getting the right values of SPECIES_REPLACE
 COUNT=0
