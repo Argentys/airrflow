@@ -55,7 +55,7 @@ mkdir -p ${OUTDIR}/fasta
 TMPDIR=$(mktemp -d)
 
 # Create fasta files of each species, chain and segment combination
-for SPECIES in human mouse
+for SPECIES in human mouse alpaca
 do
     for CHAIN in IG TR
     do
