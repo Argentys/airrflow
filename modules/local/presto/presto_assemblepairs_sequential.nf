@@ -26,7 +26,7 @@ process PRESTO_ASSEMBLEPAIRS_SEQUENTIAL {
     AssemblePairs.py sequential -1 $R2 -2 $R1 --nproc ${task.cpus} \\
         -r "${igblast}/fasta/imgt_${meta.species}_${meta.locus.toLowerCase()}_v.fasta" \\
         $args \\
-        --outname ${meta.id} --log ${meta.id}.log > ${meta.id}_command_log.txt
+        --outname ${meta.id} --log ${meta.id}.log --coord illumina > ${meta.id}_command_log.txt
     ParseLog.py -l ${meta.id}.log $args2
 
     cat <<-END_VERSIONS > versions.yml
