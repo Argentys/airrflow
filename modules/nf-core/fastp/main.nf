@@ -35,6 +35,7 @@ process FASTP {
     if ( task.ext.args?.contains('--interleaved_in') ) {
         """
         [ ! -f  ${prefix}.fastq.gz ] && ln -sf $reads ${prefix}.fastq.gz
+
         fastp \\
             --stdout \\
             --in1 ${prefix}.fastq.gz \\
@@ -89,7 +90,6 @@ process FASTP {
             $merge_fastq \\
             --thread $task.cpus \\
             --detect_adapter_for_pe \\
-
             $args \\
             2> >(tee ${prefix}.fastp.log >&2)
 
