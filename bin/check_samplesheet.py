@@ -174,7 +174,7 @@ def check_samplesheet(file_in, assembled):
 
         ## Check that species is human or mouse
         for val in tab["species"]:
-            if val not in ["human", "mouse"]:
+            if val not in ["human", "mouse", "alpaca"]:
                 print_error(
                     "species must be one of: human, mouse. Currently, only human or mouse reference files are supported."
                 )
