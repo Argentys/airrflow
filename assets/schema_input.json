@@ -20,7 +20,7 @@
             },
             "species": {
                 "type": "string",
-                "enum": ["mouse", "human"],
+                "enum": ["mouse", "human", "alpaca"],
                 "errorMessage": "Species name must be provided and must be one of: mouse, human."
             },
             "pcr_target_locus": {
