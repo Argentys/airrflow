@@ -170,7 +170,7 @@ def check_samplesheet(file_in, assembled):
         ## Check that pcr_target_locus is IG or TR
         for val in tab["pcr_target_locus"]:
             if val.upper() not in ["IG", "TR"]:
-                print_error("pcr_target_locus must be one of: IG, TR.")
+                print_error(f"{val} pcr_target_locus must be one of: IG, TR.")
 
         ## Check that species is human or mouse
         for val in tab["species"]:
