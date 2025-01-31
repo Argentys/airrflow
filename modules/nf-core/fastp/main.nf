@@ -89,8 +89,6 @@ process FASTP {
             $merge_fastq \\
             --thread $task.cpus \\
             --detect_adapter_for_pe \\
-            --length_required 300 \\
-            --length_limit 300 \\
 
             $args \\
             2> >(tee ${prefix}.fastp.log >&2)
