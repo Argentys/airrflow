@@ -35,7 +35,6 @@ process FASTP {
     if ( task.ext.args?.contains('--interleaved_in') ) {
         """
         [ ! -f  ${prefix}.fastq.gz ] && ln -sf $reads ${prefix}.fastq.gz
-        println "interleaved"
         fastp \\
             --stdout \\
             --in1 ${prefix}.fastq.gz \\
@@ -57,7 +56,6 @@ process FASTP {
         """
         [ ! -f  ${prefix}.fastq.gz ] && ln -sf $reads ${prefix}.fastq.gz
 
-        println "single end"
         fastp \\
             --in1 ${prefix}.fastq.gz \\
             --out1  ${prefix}.fastp.fastq.gz \\
@@ -79,7 +77,6 @@ process FASTP {
         """
         [ ! -f  ${prefix}_1.fastq.gz ] && ln -sf ${reads[0]} ${prefix}_1.fastq.gz
         [ ! -f  ${prefix}_2.fastq.gz ] && ln -sf ${reads[1]} ${prefix}_2.fastq.gz
-        println "paired end"
         fastp \\
             --in1 ${prefix}_1.fastq.gz \\
             --in2 ${prefix}_2.fastq.gz \\
