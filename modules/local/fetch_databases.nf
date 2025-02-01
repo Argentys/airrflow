@@ -8,6 +8,7 @@ process FETCH_DATABASES {
         'https://depot.galaxyproject.org/singularity/mulled-v2-7d8e418eb73acc6a80daea8e111c94cf19a4ecfd:a9ee25632c9b10bbb012da76e6eb539acca8f9cd-1' :
         'biocontainers/mulled-v2-7d8e418eb73acc6a80daea8e111c94cf19a4ecfd:a9ee25632c9b10bbb012da76e6eb539acca8f9cd-1' }"
 
+
     output:
     path("igblast_base"), emit: igblast
     path("imgtdb_base"), emit: reference_fasta
