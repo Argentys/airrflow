@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 f = open(sys.argv[1])
 gene = sys.argv[2]
