@@ -85,7 +85,7 @@ do
     for CHAIN in IGHV IGHD IGHJ IGKV IGKJ IGLV IGLJ
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -93,7 +93,7 @@ do
     for CHAIN in IGHV IGKV IGLV
     do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_AA $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_AA $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -102,7 +102,7 @@ do
     for CHAIN in TRAV TRAJ TRBV TRBD TRBJ TRDV TRDD TRDJ TRGV TRGJ
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -110,7 +110,7 @@ do
     for CHAIN in TRAV TRBV TRDV TRGV
     do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_AA $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_AA $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -124,7 +124,7 @@ do
     for CHAIN in IGH IGK IGL
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -133,7 +133,7 @@ do
     for CHAIN in TRA TRB TRG TRD
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -147,7 +147,7 @@ do
     for CHAIN in IGHC IGKC IGLC
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
@@ -156,7 +156,7 @@ do
     for CHAIN in TRAC TRBC TRGC TRDC
     do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
-        python3 parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
+        parse_fasta.py $FILE_NAME_NT $CHAIN "$VALUE" > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
     done
 
