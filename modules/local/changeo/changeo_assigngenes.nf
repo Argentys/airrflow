@@ -22,6 +22,8 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
+    source $(conda info --base)/etc/profile.d/conda.sh
+    conda activate $task.conda_env
     git clone https://github.com/igortru/changeo.git /tmp/changeo
     cd /tmp/changeo
     python setup.py install
