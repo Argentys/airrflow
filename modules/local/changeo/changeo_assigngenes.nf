@@ -3,7 +3,8 @@ process CHANGEO_ASSIGNGENES {
     label 'process_high'
     label 'immcantation'
 //bioconda::changeo=1.3.0 
-    conda "conda-forge::git=2.36.0 bioconda::igblast=1.22.0 conda-forge::wget=1.20.1"
+//
+    conda "bioconda::igblast=1.22.0 conda-forge::wget=1.20.1"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/mulled-v2-7d8e418eb73acc6a80daea8e111c94cf19a4ecfd:a9ee25632c9b10bbb012da76e6eb539acca8f9cd-1' :
         'biocontainers/mulled-v2-7d8e418eb73acc6a80daea8e111c94cf19a4ecfd:a9ee25632c9b10bbb012da76e6eb539acca8f9cd-1' }"
@@ -24,9 +25,24 @@ process CHANGEO_ASSIGNGENES {
     """
     which conda
 
+  # Install Miniconda on the fly
+    if [ ! -d /tmp/miniconda ]; then
+        echo "Installing Miniconda..."
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+        bash /tmp/miniconda.sh -b -p /tmp/miniconda
+        export PATH=/tmp/miniconda/bin:$PATH
+        rm /tmp/miniconda.sh
+    fi
+
+    # Set up the environment and install necessary packages
+    source /tmp/miniconda/etc/profile.d/conda.sh
+    conda install -y git=2.36.0
+
+    # Clone the ChangeO repository and install
     git clone https://github.com/igortru/changeo.git /tmp/changeo
     cd /tmp/changeo
     python setup.py install
+    
     AssignGenes.py igblast -s $reads -b $igblast --organism $meta.species --loci ${meta.locus.toLowerCase()} $args --nproc $task.cpus --outname $meta.id > ${meta.id}_changeo_assigngenes_command_log.txt
 
     cat <<-END_VERSIONS > versions.yml
