@@ -23,14 +23,12 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
-    # Install Miniconda on the fly
-    if [ ! -d /tmp/miniconda ]; then
-        echo "Installing Miniconda..."
-        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
-        bash /tmp/miniconda.sh -b -p /tmp/miniconda
-        export PATH=/tmp/miniconda/bin:$PATH
-        rm /tmp/miniconda.sh
-    fi
+# Install Miniconda on the fly
+    echo "Installing Miniconda..."
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+    bash /tmp/miniconda.sh -b -p /tmp/miniconda
+    export PATH=/tmp/miniconda/bin:$PATH
+    rm /tmp/miniconda.sh
 
     # Set custom Conda prefix and environment paths to avoid permission issues
     export CONDA_PREFIX=/tmp/miniconda
@@ -47,13 +45,12 @@ process CHANGEO_ASSIGNGENES {
     source /tmp/miniconda/etc/profile.d/conda.sh
 
     # Install dependencies using Conda
-    conda install -y git=2.36.0
+    conda install -y git
 
     # Clone ChangeO repository and install
     git clone https://github.com/igortru/changeo.git /tmp/changeo
     cd /tmp/changeo
-    python setup.py install
-    
+
     AssignGenes.py igblast -s $reads -b $igblast --organism $meta.species --loci ${meta.locus.toLowerCase()} $args --nproc $task.cpus --outname $meta.id > ${meta.id}_changeo_assigngenes_command_log.txt
 
     cat <<-END_VERSIONS > versions.yml
