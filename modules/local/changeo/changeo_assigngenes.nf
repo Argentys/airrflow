@@ -33,7 +33,7 @@ process CHANGEO_ASSIGNGENES {
  #   export HOME=/tmp
  #   export CONDA_CONFIG_DIR=/tmp/.conda-config
  #   source /tmp/miniconda/etc/profile.d/conda.sh
- 3   conda install -y git
+ #   conda install -y git
  #   git clone https://github.com/igortru/changeo.git /tmp/changeo
  #   cd /tmp/changeo
 
