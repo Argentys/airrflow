@@ -23,8 +23,6 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
-    which conda
-
   # Install Miniconda on the fly
     if [ ! -d /tmp/miniconda ]; then
         echo "Installing Miniconda..."
