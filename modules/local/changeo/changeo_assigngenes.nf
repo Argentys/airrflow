@@ -22,8 +22,17 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
-    source \$(conda info --base)/etc/profile.d/conda.sh
+    # Explicitly source conda.sh script if conda is not activated
+    if [ -f /opt/conda/etc/profile.d/conda.sh ]; then
+        source /opt/conda/etc/profile.d/conda.sh
+    else
+        echo "Conda not found!"
+        exit 1
+    fi
+
+    # Activate the Conda environment
     conda activate \$task.conda_env
+    
     git clone https://github.com/igortru/changeo.git /tmp/changeo
     cd /tmp/changeo
     python setup.py install
