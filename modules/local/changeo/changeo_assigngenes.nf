@@ -23,7 +23,7 @@ process CHANGEO_ASSIGNGENES {
     def args = task.ext.args ?: ''
     """
     wget https://raw.githubusercontent.com/igortru/changeo/refs/heads/master/bin/AssignGenes.py -O /usr/bin/AssignGenes.py
-
+    chmod u+x /usr/bin/AssignGenes.py
     AssignGenes.py igblast -s $reads -b $igblast --organism $meta.species --loci ${meta.locus.toLowerCase()} $args --nproc $task.cpus --outname $meta.id > ${meta.id}_changeo_assigngenes_command_log.txt
 
     cat <<-END_VERSIONS > versions.yml
