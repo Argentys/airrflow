@@ -23,19 +23,19 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
-    bash /tmp/miniconda.sh -b -p /tmp/miniconda
-    export PATH=/tmp/miniconda/bin:$PATH
-    rm /tmp/miniconda.sh
-    export CONDA_PREFIX=/tmp/miniconda
-    export CONDA_ENVS_PATH=/tmp/miniconda/envs
-    export CONDA_PKGS_DIRS=/tmp/miniconda/pkgs
-    export HOME=/tmp
-    export CONDA_CONFIG_DIR=/tmp/.conda-config
-    source /tmp/miniconda/etc/profile.d/conda.sh
-    conda install -y git
-    git clone https://github.com/igortru/changeo.git /tmp/changeo
-    cd /tmp/changeo
+ #   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+ #   bash /tmp/miniconda.sh -b -p /tmp/miniconda
+ #   export PATH=/tmp/miniconda/bin:$PATH
+ #   rm /tmp/miniconda.sh
+ #   export CONDA_PREFIX=/tmp/miniconda
+ #   export CONDA_ENVS_PATH=/tmp/miniconda/envs
+ #   export CONDA_PKGS_DIRS=/tmp/miniconda/pkgs
+ #   export HOME=/tmp
+ #   export CONDA_CONFIG_DIR=/tmp/.conda-config
+ #   source /tmp/miniconda/etc/profile.d/conda.sh
+ 3   conda install -y git
+ #   git clone https://github.com/igortru/changeo.git /tmp/changeo
+ #   cd /tmp/changeo
 
     AssignGenes.py igblast -s $reads -b $igblast --organism $meta.species --loci ${meta.locus.toLowerCase()} $args --nproc $task.cpus --outname $meta.id > ${meta.id}_changeo_assigngenes_command_log.txt
 
