@@ -23,31 +23,18 @@ process CHANGEO_ASSIGNGENES {
 
     def args = task.ext.args ?: ''
     """
-# Install Miniconda on the fly
     echo "Installing Miniconda..."
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
     bash /tmp/miniconda.sh -b -p /tmp/miniconda
     export PATH=/tmp/miniconda/bin:$PATH
     rm /tmp/miniconda.sh
-
-    # Set custom Conda prefix and environment paths to avoid permission issues
     export CONDA_PREFIX=/tmp/miniconda
     export CONDA_ENVS_PATH=/tmp/miniconda/envs
     export CONDA_PKGS_DIRS=/tmp/miniconda/pkgs
-
-    # Set HOME to /tmp to avoid user permission issues
     export HOME=/tmp
-
-    # Ensure that Conda doesn't try to create directories in a restricted location
     export CONDA_CONFIG_DIR=/tmp/.conda-config
-
-    # Initialize Conda
     source /tmp/miniconda/etc/profile.d/conda.sh
-
-    # Install dependencies using Conda
     conda install -y git
-
-    # Clone ChangeO repository and install
     git clone https://github.com/igortru/changeo.git /tmp/changeo
     cd /tmp/changeo
 
