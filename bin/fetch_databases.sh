@@ -3,7 +3,7 @@
 echo "Fetching databases..."
 
 #bash fetch_imgt.sh -o imgtdb_base
-wget https://github.com/Argentys/airrflow/blob/master/aux/imgtdb.tar.gz
+wget https://github.com/Argentys/airrflow/raw/refs/heads/master/aux/imgtdb.tar.gz
 tar -xvzf imgtdb.tar.gz
 rm imgtdb.tar.gz
 
