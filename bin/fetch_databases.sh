@@ -9,7 +9,7 @@ rm imgtdb.tar.gz
 
 #fetch_igblastdb.sh -x -o igblast_base
 wget https://github.com/Argentys/airrflow/raw/refs/heads/master/aux/igblast.tar.gz
-tar -xvzf igblast.tar.gz
+tar -xvzf igblast.tar.gz 
 rm igblast.tar.gz
 
 
