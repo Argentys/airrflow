@@ -33,7 +33,7 @@ if (!("REPERTOIRE" %in% names(opt))) {
 db <- read_rearrangement(opt$REPERTOIRE)
 
 # Filter and save
-filter_pass <- db$junction_length %% 3 == 0
+filter_pass <- db$junction_length %% 1 == 0  #3
 #table(filter_pass)
 
 if (!is.null(opt$OUTNAME)) {
