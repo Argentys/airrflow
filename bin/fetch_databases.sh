@@ -13,6 +13,6 @@ tar -xvzf igblast.tar.gz
 rm igblast.tar.gz
 
 
-#imgt2igblast.sh -i ./imgtdb_base -o igblast_base
+imgt2igblast.sh -i ./imgtdb_base -o igblast_base
 
 echo "FetchDBs process finished. "
