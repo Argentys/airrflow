@@ -28,7 +28,7 @@ process COLLAPSE_DUPLICATES {
         'outdir'=getwd(),\\
         'nproc'=${task.cpus},\\
         'outname'='${meta.id}',\\
-        'verbose'=TRUE,\\
+        'verbose'='TRUE',\\
         'log'='${meta.id}_collapse_command_log'))"
 
     cp -r enchantr ${meta.id}_collapse_report && rm -r enchantr
