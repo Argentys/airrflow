@@ -1,7 +1,7 @@
 process COLLAPSE_DUPLICATES {
     tag "$meta.id"
 
-    label 'process_single' 
+    label 'process_high_memory' 
 //'process_long' 
     label 'immcantation'
 
