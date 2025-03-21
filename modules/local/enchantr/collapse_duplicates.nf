@@ -2,14 +2,12 @@ process COLLAPSE_DUPLICATES {
     tag "$meta.id"
 
     label 'process_high_memory' 
-//'process_long' 
     label 'immcantation'
 
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "nf-core/airrflow currently does not support Conda. Please use a container profile instead."
     }
-    //container "docker.io/immcantation/airrflow:4.1.0"
-    container = 'igortrue/immcantation:latest'
+    container 'igortrue/immcantation:latest'
 
     input:
     tuple val(meta), path(tabs) // tuple [val(meta), sequence tsv in AIRR format ]
