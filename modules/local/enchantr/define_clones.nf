@@ -56,6 +56,7 @@ process DEFINE_CLONES {
                                         'species'='auto', \\
                                         'cloneby'='${params.cloneby}', \\
                                         'outputby'='${params.cloneby}', \\
+                                        'model'= '${params.clustering_model}', \\
                                         'force'=FALSE, \\
                                         'threshold'=${thr}, \\
                                         'singlecell'='${params.singlecell}', \\
