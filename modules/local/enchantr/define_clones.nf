@@ -41,8 +41,15 @@ process DEFINE_CLONES {
 
 
     script:
-    def args = task.ext.args ? asString(task.ext.args) : ''
+    def args1 = task.ext.args ? asString(task.ext.args) : ''
+    def args2 = task.ext.args2 ? asString(task.ext.args2) : ''
     def thr = threshold.join("")
+    def args = ""
+    if  (thr == 'spectral') {
+        args = args2
+    }  else {
+        args = args1
+    }
     def input = ""
     if (repertoires_samplesheet) {
         input = repertoires_samplesheet

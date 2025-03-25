@@ -38,7 +38,8 @@ workflow CLONAL_ANALYSIS {
             .dump(tag: 'clone_threshold')
             .filter { it != 'NA'}
             .filter { it != 'NaN' }
-            .ifEmpty { if (params.default_threshold != "auto") { params.default_threshold } else {error "Automatic clone_threshold is 'NA'. Consider setting --clonal_threshold manually."} }
+            .ifEmpty { if (params.default_threshold != "auto") { params.default_threshold } else {'spectral'} }
+    //error "Automatic clone_threshold is 'NA'. Consider setting --clonal_threshold manually."
 
     } else {
         clone_threshold = params.clonal_threshold

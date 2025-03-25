@@ -400,7 +400,7 @@
                     "oneOf": [
                         {
                             "type": "string",
-                            "enum": ["auto"]
+                            "enum": ["auto","spectral"]
                         },
                         {
                             "type": "number",
