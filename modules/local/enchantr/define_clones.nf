@@ -46,6 +46,7 @@ process DEFINE_CLONES {
     def thr = threshold.join("")
     def args = ""
     if  (thr == 'spectral') {
+        thr = NULL
         args = args2
     }  else {
         args = args1
