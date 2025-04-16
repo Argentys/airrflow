@@ -9,14 +9,16 @@ input_file="$1"
 # Extract prefix before first dot with error checking
 prefix=$(cut -f 1 -d "." <<< "$input_file" 2>/dev/null)
 if [ -z "$prefix" ]; then
-    echo "Error: Could not extract prefix from $input_file"
-    exit 1
-fi
-
-working_dir="${prefix}.nextflow.dir"
-
-if [ -n "$2" ]; then
-    working_dir="$2"
+    if [ -z "$2" ]; then 
+        echo "Error: Could not extract prefix from $input_file"
+        exit 1 
+    fi
+else 
+    if [ -n "$2" ]; then
+       working_dir="$2"
+    else
+       working_dir="${prefix}.nextflow.dir"
+    fi
 fi
 
 # Run Python script with error checking
