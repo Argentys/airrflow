@@ -37,8 +37,13 @@ df.to_csv(nm + "/data.tsv", sep='\t', index=False)
 ff = open(nm + "/input.tsv","w")
 bt = data['BType']
 bt = bt.replace("/","_")
+species = data['Species']
+if 'mouse' in species:
+    species = 'mouse'
+subject = data['Subject']
+subject = subject.replace("/","_")
 defline = f"filename\tspecies\tsubject_id\tsample_id\ttissue\tsex\tage\tbiomaterial_provider\tpcr_target_locus\tsingle_cell";
-meta = f"data.tsv\t{data['Species']}\t{data['Subject']}\t{bt}\t{data['BSource']}\tmale\t{data['Age']}\t{data['Author']}\tIG\tFALSE"
+meta = f"data.tsv\t{species}\t{subject}\t{bt}\t{data['BSource']}\tmale\t{data['Age']}\t{data['Author']}\tIG\tFALSE"
 print(defline, file = ff)
 print(meta, file = ff)
 ff.close()
