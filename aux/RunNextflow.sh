@@ -1,4 +1,4 @@
-if [ $# -ne 2 ]; then
+if [ $# -eq 0 ]; then
     echo "Usage: $0 <input_file gz> <output_dir>"
     exit 1
 fi
