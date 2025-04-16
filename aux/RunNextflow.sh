@@ -1,3 +1,8 @@
+if [ $# -ne 2 ]; then
+    echo "Error: Please provide exactly one input file"
+    echo "Usage: $0 <input_file gz> <output_dir>"
+    exit 1
+fi
 
 # Check if an argument was provided
 
