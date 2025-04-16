@@ -1,10 +1,6 @@
 
 # Check if an argument was provided
-if [ $# -ne 1 ]; then
-    echo "Error: Please provide exactly one input file"
-    echo "Usage: $0 <input_file>"
-    exit 1
-fi
+
 script_dir=$(dirname "$(realpath "$0")")
 # Store input file in a clearer variable name
 input_file="$1"
@@ -24,6 +20,11 @@ fi
 
 # Change directory with error checking
 working_dir="${prefix}.nextflow.dir"
+
+if [ -n "$2" ]; then
+    working_dir="$2"
+fi
+
 if ! cd "$working_dir"; then
     echo "Error: Could not change to directory $working_dir"
     exit 1
