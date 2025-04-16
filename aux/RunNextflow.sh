@@ -42,6 +42,7 @@ fi
         --input input.tsv \
         -latest \
         --lineage_trees false \
+        -resume \
 #	--clonal_threshold spectral \
-        -resume 
+    
 #"
