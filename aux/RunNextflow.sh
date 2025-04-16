@@ -12,17 +12,17 @@ if [ -z "$prefix" ]; then
     exit 1
 fi
 
-# Run Python script with error checking
-if ! python3 $script_dir/AddSequenceId.py "$input_file"; then
-    echo "Error: Python script execution failed"
-    exit 1
-fi
-
 # Change directory with error checking
 working_dir="${prefix}.nextflow.dir"
 
 if [ -n "$2" ]; then
     working_dir="$2"
+fi
+
+# Run Python script with error checking
+if ! python3 $script_dir/addSequenceId.py "$input_file" "$working_dir"; then
+    echo "Error: Python script execution failed"
+    exit 1
 fi
 
 if ! cd "$working_dir"; then
@@ -39,7 +39,8 @@ fi
         -w W.dir \
         --input input.tsv \
         -latest \
-        --lineage_trees true \
+        --lineage_trees false \
 #	--clonal_threshold spectral \
-        -resume
+        -resume \
+        -quiet
 #"
