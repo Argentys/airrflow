@@ -41,6 +41,5 @@ fi
         -latest \
         --lineage_trees false \
 #	--clonal_threshold spectral \
-        -resume \
-        -quiet
+        -resume 
 #"
