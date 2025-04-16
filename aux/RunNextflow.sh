@@ -3,10 +3,7 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
-# Check if an argument was provided
-
 script_dir=$(dirname "$(realpath "$0")")
-# Store input file in a clearer variable name
 input_file="$1"
 
 # Extract prefix before first dot with error checking
@@ -16,7 +13,6 @@ if [ -z "$prefix" ]; then
     exit 1
 fi
 
-# Change directory with error checking
 working_dir="${prefix}.nextflow.dir"
 
 if [ -n "$2" ]; then
