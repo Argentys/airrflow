@@ -33,7 +33,7 @@ fi
 # Launch screen and Nextflow command
 # Using exec to replace shell with screen process
 #exec screen -dm bash -c "
-    nextflow run Argentys/airrflow \
+    nextflow -quiet run Argentys/airrflow \
         -profile test,docker \
         --outdir O.dir \
         -w W.dir \
