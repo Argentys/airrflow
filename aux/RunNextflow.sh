@@ -5,7 +5,7 @@ if [ $# -ne 1 ]; then
     echo "Usage: $0 <input_file>"
     exit 1
 fi
-
+script_dir=$(dirname "$(realpath "$0")")
 # Store input file in a clearer variable name
 input_file="$1"
 
@@ -17,7 +17,7 @@ if [ -z "$prefix" ]; then
 fi
 
 # Run Python script with error checking
-if ! python3 ../AddId.py "$input_file"; then
+if ! python3 $script_dir/AddSequenceId.py "$input_file"; then
     echo "Error: Python script execution failed"
     exit 1
 fi
