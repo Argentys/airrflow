@@ -28,7 +28,7 @@ if "sequence_id" not in df.columns:
     df['sequence_id'] = range(1, len(df) + 1)
 
 # Save to TSV
-nm= sys.argv[2] #output dir
+nm= sys.argv[2]
 import shutil
 shutil.rmtree(nm, ignore_errors=True)
 os.mkdir(nm)
