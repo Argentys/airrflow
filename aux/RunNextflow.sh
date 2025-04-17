@@ -36,7 +36,7 @@ fi
 # Launch screen and Nextflow command
 # Using exec to replace shell with screen process
 #exec screen -dm bash -c "
-    nextflow -quiet run Argentys/airrflow \
+    nextflow run Argentys/airrflow \
         -profile test,docker \
         --outdir O.dir \
         -w W.dir \
@@ -44,5 +44,5 @@ fi
         -latest \
         --lineage_trees false \
         -resume \
-#	--clonal_threshold spectral \  
+#	--clonal_threshold spectral \
 #"
