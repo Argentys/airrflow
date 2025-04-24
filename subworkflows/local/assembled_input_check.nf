@@ -24,15 +24,18 @@ workflow ASSEMBLED_INPUT_CHECK {
             .branch { it ->
                 fasta: it[0].filename =~ /[fasta|fa]$/
                 tsv:   it[0].filename =~ /tsv$/
+                gz:   it[0].filename =~ /tsv.gz$/
             }
             .set{ ch_metadata }
 
     ch_unique_fasta = RENAME_FILE_FASTA( ch_metadata.fasta )
     ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
+    ch_unique_gz = RENAME_FILE_GZ( ch_metadata.gz )
 
     emit:
     ch_fasta = ch_unique_fasta
     ch_tsv = ch_unique_tsv
+    ch_gz = ch_unique_gz
     validated_input = ch_validated_input
     versions = VALIDATE_INPUT.out.versions
 }
