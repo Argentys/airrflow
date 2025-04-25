@@ -6,7 +6,7 @@ include { VALIDATE_INPUT } from '../../modules/local/enchantr/validate_input'
 include { SAMPLESHEET_CHECK as SAMPLESHEET_CHECK_ASSEMBLED } from '../../modules/local/samplesheet_check'
 include { RENAME_FILE as RENAME_FILE_FASTA } from '../../modules/local/rename_file'
 include { RENAME_FILE as RENAME_FILE_TSV } from '../../modules/local/rename_file'
-
+include { ADD_SEQID_OAS } from '../../modules/local/add_seqid_oas'
 workflow ASSEMBLED_INPUT_CHECK {
     take:
     samplesheet // file: /path/to/samplesheet.csv
@@ -29,8 +29,8 @@ workflow ASSEMBLED_INPUT_CHECK {
             .set{ ch_metadata }
 
     ch_unique_fasta = RENAME_FILE_FASTA( ch_metadata.fasta )
-    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
-    ch_unique_gz = RENAME_FILE_GZ( ch_metadata.gz )
+//    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
+    ch_unique_tsv  = ADD_SEQID_OAS( ch_metadata.gz ) | RENAME_FILE_TSV
 
     emit:
     ch_fasta = ch_unique_fasta
