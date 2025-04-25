@@ -18,6 +18,6 @@ process ADD_SEQID_OAS {
     # Call the specialized Python script to process the .gz file
     python3 addSequenceIdToOAS.py \\
         ${gz_file} \\
-        ${meta.id}.tsv \\
+        ${meta.id}.tsv
     """
 }
