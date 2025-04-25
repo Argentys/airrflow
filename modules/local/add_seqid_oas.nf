@@ -8,6 +8,7 @@ process ADD_SEQID_OAS {
         'biocontainers/biopython:1.81' }"
 
     input:
+    path script from '${projectDir}/bin/addSequenceIdToOAS.py'
     tuple val(meta), path(file)
 
     output:
@@ -15,7 +16,7 @@ process ADD_SEQID_OAS {
 
     script:
     """
-    python3  /bin/addSequenceIdToOAS.py \\
+    python3  ${script} \\
         ${file} \\
         ${meta.id}.tsv
     """
