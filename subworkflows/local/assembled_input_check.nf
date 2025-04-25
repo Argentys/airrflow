@@ -24,7 +24,7 @@ workflow ASSEMBLED_INPUT_CHECK {
             .branch { it ->
                 fasta: it[0].filename =~ /[fasta|fa]$/
                 tsv:   it[0].filename =~ /tsv$/
-                gz:   it[0].filename =~ /tsv.gz$/
+                gz:   it[0].filename =~ /gz$/
             }
             .set{ ch_metadata }
 
