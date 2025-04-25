@@ -43,7 +43,7 @@ workflow ASSEMBLED_INPUT_CHECK {
     }
 
     if (!ch_metadata.gz.isEmpty()) {
-        ch_unique_tsv = ADD_SEQID_OAS(ch_metadata.gz) | RENAME_FILE_TSV
+        ch_unique_tsv = ADD_SEQID_OAS(ch_metadata.gz)
     }
 
     emit:
