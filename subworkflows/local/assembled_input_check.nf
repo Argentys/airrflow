@@ -30,17 +30,8 @@ workflow ASSEMBLED_INPUT_CHECK {
 
     ch_unique_fasta = RENAME_FILE_FASTA(ch_metadata.fasta)
 
-    // Handle TSV
-    ch_tsv_renamed = ch_metadata.tsv
-        .filter { it }
-        .map { RENAME_FILE_TSV(it) }
-
-    // Handle GZ
-    ch_tsv_seqid_added = ch_metadata.gz
-        .filter { it }
-        .map { ADD_SEQID_OAS(it) }
-
-    // Merge both TSV-related outputs
+    ch_tsv_renamed = RENAME_FILE_TSV(ch_metadata.tsv)
+    ch_tsv_seqid_added = ADD_SEQID_OAS(ch_metadata.gz)
     ch_unique_tsv = ch_tsv_renamed.mix(ch_tsv_seqid_added)
 
     emit:
