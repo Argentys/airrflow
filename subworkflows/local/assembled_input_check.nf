@@ -29,7 +29,7 @@ workflow ASSEMBLED_INPUT_CHECK {
             .set{ ch_metadata }
 
     ch_unique_fasta = RENAME_FILE_FASTA( ch_metadata.fasta )
-//    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
+    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
     ch_unique_tsv  = ADD_SEQID_OAS( ch_metadata.gz ) | RENAME_FILE_TSV
 
     emit:
