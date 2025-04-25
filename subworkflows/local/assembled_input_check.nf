@@ -35,7 +35,6 @@ workflow ASSEMBLED_INPUT_CHECK {
     emit:
     ch_fasta = ch_unique_fasta
     ch_tsv = ch_unique_tsv
-    ch_gz = ch_unique_gz
     validated_input = ch_validated_input
     versions = VALIDATE_INPUT.out.versions
 }
