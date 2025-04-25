@@ -28,9 +28,23 @@ workflow ASSEMBLED_INPUT_CHECK {
             }
             .set{ ch_metadata }
 
-    ch_unique_fasta = RENAME_FILE_FASTA( ch_metadata.fasta )
-    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
-    ch_unique_tsv  = ADD_SEQID_OAS( ch_metadata.gz ) | RENAME_FILE_TSV
+//    ch_unique_fasta = RENAME_FILE_FASTA( ch_metadata.fasta )
+//    ch_unique_tsv = RENAME_FILE_TSV( ch_metadata.tsv )
+
+    ch_unique_fasta = Channel.empty()
+    ch_unique_tsv = Channel.empty()
+
+    if (!ch_metadata.fasta.isEmpty()) {
+        ch_unique_fasta = RENAME_FILE_FASTA(ch_metadata.fasta)
+    }
+
+    if (!ch_metadata.tsv.isEmpty()) {
+        ch_unique_tsv = RENAME_FILE_TSV(ch_metadata.tsv)
+    }
+
+    if (!ch_metadata.gz.isEmpty()) {
+        ch_unique_tsv = ADD_SEQID_OAS(ch_metadata.gz) | RENAME_FILE_TSV
+    }
 
     emit:
     ch_fasta = ch_unique_fasta
