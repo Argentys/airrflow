@@ -15,7 +15,7 @@ process ADD_SEQID_OAS {
 
     script:
     """
-    python3 \${projectDir}/bin/addSequenceIdToOAS.py \\
+    python3 addSequenceIdToOAS.py \\
         ${file} \\
         ${meta.id}.tsv
     """
