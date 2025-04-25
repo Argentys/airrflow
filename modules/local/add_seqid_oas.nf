@@ -4,8 +4,8 @@ process ADD_SEQID_OAS {
 
     conda "conda-forge::biopython=1.81 conda-forge::pandas=2.2.2 conda-forge::python-gzip"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/multipackage:biopython-1.81-pandas-2.2.2' :
-        'quay.io/biocontainers/multipackage:biopython-1.81-pandas-2.2.2' }"
+        'https://depot.galaxyproject.org/singularity/biopython:1.81' :
+        'biocontainers/biopython:1.81' }"
 
     input:
     tuple val(meta), path(gz_file)
