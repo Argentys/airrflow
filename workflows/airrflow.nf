@@ -214,6 +214,7 @@ workflow AIRRFLOW {
 
         // Clonal analysis
         CLONAL_ANALYSIS(
+            ASSEMBLED_INPUT_CHECK.out.ch_tsv
             ch_repertoires_for_clones,
             VDJ_ANNOTATION.out.reference_fasta.collect(),
             ch_report_logo_img.collect().ifEmpty([])
