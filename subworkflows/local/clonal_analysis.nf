@@ -7,6 +7,7 @@ include { IGTREE } from '../../modules/local/igtree'
 
 workflow CLONAL_ANALYSIS {
     take:
+    ch_input,
     ch_repertoire
     ch_reference_fasta
     ch_logo
@@ -92,7 +93,7 @@ workflow CLONAL_ANALYSIS {
             .set { ch_clones_for_igtree }
 
         IGTREE(
-            ch_repertoire,          // Original input [meta, input_file]
+            ch_input,          // Original input [meta, input_file]
             ch_clones_for_igtree    // Clones with proper meta structure
         )
         ch_versions = ch_versions.mix(IGTREE.out.versions)
