@@ -10,7 +10,7 @@ process IGTREE {
     path clones_file                 // clone-pass.tsv from define_clones
 
     output:
-    tuple val(meta), path("*_tree.txt"), emit: tree
+    tuple val(meta), path("${meta.id}_tree.txt"), emit: tree
     path "versions.yml", emit: versions
 
     script:
