@@ -94,7 +94,7 @@ workflow CLONAL_ANALYSIS {
 
         IGTREE(
             ch_tsv,          // Original input [meta, input_file]
-            ch_clones_for_igtree    // Clones with proper meta structure
+            DEFINE_CLONES_COMPUTE.out.tab.collect()  // Just pass the clone files directly
         )
         ch_versions = ch_versions.mix(IGTREE.out.versions)
     }
