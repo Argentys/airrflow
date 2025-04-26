@@ -26,4 +26,3 @@ process IGTREE {
     END_VERSIONS
     """
 }
-EOF
