@@ -3,6 +3,7 @@ include { FIND_THRESHOLD as REPORT_THRESHOLD } from '../../modules/local/enchant
 include { DEFINE_CLONES as DEFINE_CLONES_COMPUTE  } from '../../modules/local/enchantr/define_clones'
 include { DEFINE_CLONES as DEFINE_CLONES_REPORT } from '../../modules/local/enchantr/define_clones'
 include { DOWSER_LINEAGES } from '../../modules/local/enchantr/dowser_lineages'
+include { IGTREE } from '../../modules/local/igtree'
 
 workflow CLONAL_ANALYSIS {
     take:
@@ -82,8 +83,20 @@ workflow CLONAL_ANALYSIS {
     )
 
     ch_versions = ch_versions.mix(DEFINE_CLONES_COMPUTE.out.versions)
-    // TODO: add clonal analysis logs to report file size
-    //ch_logs = ch_logs.mix(DEFINE_CLONES_COMPUTE.out.logs)
+    
+    // Add IgTree analysis here
+    if (params.run_igtree) {
+        DEFINE_CLONES_COMPUTE.out.tab
+            .flatten()
+            .map { it -> [ [id: "${it.baseName}".replaceFirst("__clone-pass", "")], it ] }
+            .set { ch_clones_for_igtree }
+
+        IGTREE(
+            ch_repertoire,          // Original input [meta, input_file]
+            ch_clones_for_igtree    // Clones with proper meta structure
+        )
+        ch_versions = ch_versions.mix(IGTREE.out.versions)
+    }
 
     // prepare ch for define clones all samples report
     DEFINE_CLONES_COMPUTE.out.tab
