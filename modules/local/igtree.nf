@@ -15,7 +15,7 @@ process IGTREE {
 
     script:
     """
-    python3 igtree.py \\
+    igtree.py \\
         ${tabs} \\
         ${clones_file} \\
         > ${meta.id}_tree.txt
